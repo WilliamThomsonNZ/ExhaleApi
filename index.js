@@ -1,5 +1,6 @@
 // Add Express
 const express = require("express");
+const cors = require("cors");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 require("dotenv").config({ path: ".env" });
 
@@ -21,7 +22,11 @@ const mailChimpSignUp = async (email) => {
 
 // Initialize Express
 const app = express();
-
+app.use(
+  cors({
+    origin: "http://localhost:8000/",
+  })
+);
 //End point to add email to list
 app.post("/api/email", async (req, res) => {
   console.log("requesteREceieved");
