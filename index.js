@@ -34,7 +34,7 @@ app.post("/api/email", async (req, res) => {
   if (userEmail === "")
     res.json({
       code: 400,
-      message: "error when trying to sign up new customer",
+      message: "error when trying to sign up new customer: Email Empty",
     });
   try {
     await mailChimpSignUp(userEmail);
@@ -44,6 +44,7 @@ app.post("/api/email", async (req, res) => {
     res.json({
       code: err.status,
       message: "error when trying to sign up new customer",
+      error: err,
     });
   }
 });
@@ -52,9 +53,7 @@ app.get("/", (req, res) => {
   res.json({ message: "API RUNNING" });
 });
 // Initialize server
-app.listen(6000, () => {
-  console.log("Running on port 5000.");
-});
+app.listen(6000, () => {});
 
 // Export the Express API
 module.exports = app;
