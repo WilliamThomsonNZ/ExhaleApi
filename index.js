@@ -24,18 +24,22 @@ const app = express();
 
 //End point to add email to list
 app.post("/api/email", async (req, res) => {
+  console.log("requesteREceieved");
   const userEmail = req.query.email;
   if (userEmail === "")
-    res.status(400).send("error when trying to sign up new customer");
+    res.json({
+      code: 400,
+      message: "error when trying to sign up new customer",
+    });
   try {
-    const response = await mailChimpSignUp(userEmail);
-    if (response.statusCode == 400) {
-      res.status(400).send("error when trying to sign up new customer");
-    } else {
-      res.status(200).send("Email signed up");
-    }
+    await mailChimpSignUp(userEmail);
+    res.json({ code: 200, message: "Successfully added user to email list" });
   } catch (err) {
-    res.status(400).send("error when trying to sign up new customer");
+    console.log(err);
+    res.json({
+      code: err.status,
+      message: "error when trying to sign up new customer",
+    });
   }
 });
 
