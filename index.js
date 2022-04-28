@@ -24,7 +24,7 @@ const mailChimpSignUp = async (email) => {
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:8000/",
+    origin: "http://localhost:8000",
   })
 );
 //End point to add email to list
