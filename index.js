@@ -43,6 +43,9 @@ app.post("/api/email", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.json({ message: "API RUNNING" });
+});
 // Initialize server
 app.listen(6000, () => {
   console.log("Running on port 5000.");
