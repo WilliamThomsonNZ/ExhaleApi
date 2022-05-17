@@ -51,7 +51,7 @@ app.post("/api/email", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.json({ message: process });
+  res.json({ message: "API RUNNING" });
 });
 
 const transporter = nodemailer.createTransport({
