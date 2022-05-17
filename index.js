@@ -58,7 +58,7 @@ const transporter = nodemailer.createTransport({
   service: "hotmail",
   auth: {
     user: process.env.NODE_MAILER_EMAIL,
-    pass: process.env.NODE.NODE_MAILER_PASSWORD,
+    pass: process.env.NODE_MAILER_PASSWORD,
   },
 });
 
@@ -69,8 +69,8 @@ app.post("/api/contact", jsonParser, (req, res) => {
   const message = req.body.message;
 
   const options = {
-    from: proceess.env.NODE_MAILER_EMAIL,
-    to: process.env.NODE_MAILER_PASSWORD,
+    from: process.env.NODE_MAILER_EMAIL,
+    to: process.env.NODE_MAILER_TO,
     subject: "New form submission from Exhale Yoga contact page",
     text: `
       NAME: ${name}
