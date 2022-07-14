@@ -26,7 +26,7 @@ const mailChimpSignUp = async (email) => {
 const app = express();
 app.use(
   cors({
-    origin: ["https://www.exhaleyoga.co.nz/", "https://www.exhaleyoga.co.nz/*"],
+    origin: ["https://www.exhaleyoga.co.nz", "https://www.exhaleyoga.co.nz/*"],
   })
 );
 //End point to add email to list
